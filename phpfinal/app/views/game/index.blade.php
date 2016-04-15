@@ -13,5 +13,5 @@
     </div>
     <hr>
     <div>
-        {{HTML::linkRoute('foo')}}
+        {{HTML::linkAction('GameController@play', 'Play Game')}}
     </div>

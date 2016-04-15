@@ -15,7 +15,12 @@ class GameController extends \BaseController {
 
 	public function play()
 	{
-		
+		return View::make('game.game');
+	}
+	
+	public function result()
+	{
+		return View::make('game.result');
 	}
 
 	/**
