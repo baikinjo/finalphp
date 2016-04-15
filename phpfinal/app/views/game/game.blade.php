@@ -11,7 +11,7 @@
             color: red;
         }
         #ratio{
-            font-size: 36px;
+            font-size: 24px;
         }
         body {
             font-family: 'Source Sans Pro', 'Arial';
@@ -37,16 +37,24 @@
 <table align="center">
     <tbody>
     <tr>
+
+        <th>
+            <p>Wins: <span id="win"></span></p>
+        </th>
+        <th>
+            <p>Score: <span id="loss"></span></p>
+        </th>
+        <th>
+            <p>Timer: <span id="ratio"></span></p>
+        </th>
+
+    </tr>
+
+    <tr>
         <th>
             <canvas id="myCanvas" width="600" height="400"></canvas>
         </th>
-        <th>
-            <p>Wins: <span id="win"></span></p>
-            <p>Score: <span id="loss"></span></p>
-            <p>Timer: <br>
-                <span id="ratio"></span>
-            </p>
-        </th>
+
     </tr>
     </tbody>
 </table>
@@ -103,13 +111,16 @@
     var id;
 
     id = setInterval(function() {
-        counter--;
+
         if(counter < 0) {
             //newElement.parentNode.replaceChild(downloadButton, newElement);
-            //clearInterval(id);
+            counter = 0;
         } else {
             ratio.innerHTML = counter.toString() + " seconds.";
         }
+        counter--;
+
+
     }, 1000);
 
     // Initialize loop variables (the loop is a click event listener)
@@ -206,25 +217,24 @@
                     if(open == carDoor){
                         ++numWin;
                         stats.innerHTML = 'Congratulations!';
-                        score += 100*counter;
+                        score += 100*(counter+1);
+                        turn = -1;
                     }
                     else {
                         ++numLoss;
                         stats.innerHTML = 'Loser...';
+                        turn = -10;
 
                     }
                     //ratioValue = 1.0*numWin/(numWin+numLoss);
                     // Update results
                     win.innerHTML = numWin;
                     loss.innerHTML = score;
-                    window.alert(counter);
+                    window.alert(counter+1);
                     counter = 0;
 
-
-
-
                     // ratio.innerHTML = (ratioValue*100).toFixed(1);
-                    turn = -1;
+
                 };
 
             }
