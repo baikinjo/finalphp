@@ -67,6 +67,8 @@
     var numWin = 0;
     var numLoss = 0;
     var ratioValue = 0;
+    var currentTime;
+    var check = 0;
     // Html element to write messages to player
     var stats = document.getElementById('status');
     stats.innerHTML = 'Choose a door.';
@@ -107,18 +109,21 @@
     };
 
 
-    var counter = 10;
+    var counter = 5;
     var id;
 
     id = setInterval(function() {
 
         if(counter < 0) {
             //newElement.parentNode.replaceChild(downloadButton, newElement);
-            counter = 0;
+            turn=-10;
+            stats.innerHTML = 'Time Ran Out!';
+            
         } else {
             ratio.innerHTML = counter.toString() + " seconds.";
         }
-        counter--;
+        if(check != 1)
+            counter--;
 
 
     }, 1000);
@@ -158,7 +163,7 @@
             context.drawImage(imageCloseDoor, 400,0,200, 350);
 
             stats.innerHTML = 'One more time? Choose a door.';
-            counter = 10;
+            counter = 5;
             ++turn;
         } else {
             if (turn == 0){ // Check clicked door
@@ -219,6 +224,8 @@
                         stats.innerHTML = 'Congratulations!';
                         score += 100*(counter+1);
                         turn = -1;
+                        check = 1;
+                        currentTime = counter;
                     }
                     else {
                         ++numLoss;
@@ -230,8 +237,8 @@
                     // Update results
                     win.innerHTML = numWin;
                     loss.innerHTML = score;
-                    window.alert(counter+1);
-                    counter = 0;
+
+                    ratio.innerHTML = currentTime;
 
                     // ratio.innerHTML = (ratioValue*100).toFixed(1);
 
