@@ -39,13 +39,11 @@
     <tr>
 
         <th>
-            <p>Wins: <span id="win"></span></p>
-        </th>
-        <th>
-            <p>Score: <span id="loss"></span></p>
-        </th>
-        <th>
-            <p>Timer: <span id="ratio"></span></p>
+            <p>Wins: <span id="win"></span>
+
+            Score: <span id="loss"></span>
+
+            Timer: <span id="ratio"></span></p>
         </th>
 
     </tr>
@@ -230,7 +228,7 @@
                     // Update results
                     win.innerHTML = numWin;
                     loss.innerHTML = score;
-                    window.alert(counter+1);
+
                     counter = 0;
 
                     // ratio.innerHTML = (ratioValue*100).toFixed(1);
@@ -243,6 +241,7 @@
 
     }, false);
 </script>
+{{HTML::linkAction('GameController@play', 'Play Again')}}
 {{HTML::linkAction('GameController@result', 'Result')}}
 </body>
 </html>
