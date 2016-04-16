@@ -233,5 +233,6 @@
 
     }, false);
 </script>
+{{HTML::linkAction('GameController@result', 'Result')}}
 </body>
 </html>

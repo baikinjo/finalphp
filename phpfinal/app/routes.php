@@ -17,8 +17,6 @@ Route::get('/', function()
 });
 
 Route::resource('game', 'GameController');
+Route::get('play', 'GameController@play');
+Route::get('result', 'GameController@result');
 
-Route::get('/foo', function()
-{
-	return "you arrived";
-});
