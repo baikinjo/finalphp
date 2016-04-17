@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Monty Hall simulation</title>
+    <title>PHP FINAL COMP 3975</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <style>
         #win{
@@ -39,13 +39,11 @@
     <tr>
 
         <th>
-            <p>Wins: <span id="win"></span></p>
-        </th>
-        <th>
-            <p>Score: <span id="loss"></span></p>
-        </th>
-        <th>
-            <p>Timer: <span id="ratio"></span></p>
+            <p>Wins: <span id="win"></span>
+
+            Score: <span id="loss"></span>
+
+            Timer: <span id="ratio"></span></p>
         </th>
 
     </tr>
@@ -68,7 +66,7 @@
     var numLoss = 0;
     var ratioValue = 0;
     var currentTime;
-    var check = 0;
+    var checkTime = 0;
     // Html element to write messages to player
     var stats = document.getElementById('status');
     stats.innerHTML = 'Choose a door.';
@@ -120,9 +118,10 @@
             stats.innerHTML = 'Time Ran Out!';
             
         } else {
-            ratio.innerHTML = counter.toString() + " seconds.";
+            ratio.innerHTML = (counter).toString() + " seconds.";
+
         }
-        if(check != 1)
+        if(checkTime != 1)
             counter--;
 
 
@@ -222,23 +221,24 @@
                     if(open == carDoor){
                         ++numWin;
                         stats.innerHTML = 'Congratulations!';
-                        score += 100*(counter+1);
+                        score += 100*(counter);
                         turn = -1;
-                        check = 1;
+                        checkTime = 1;
                         currentTime = counter;
                     }
                     else {
                         ++numLoss;
                         stats.innerHTML = 'Loser...';
                         turn = -10;
-
+                        checkTime = 1;
+                        currentTime = counter;
                     }
                     //ratioValue = 1.0*numWin/(numWin+numLoss);
                     // Update results
                     win.innerHTML = numWin;
                     loss.innerHTML = score;
 
-                    ratio.innerHTML = currentTime;
+                    ratio.innerHTML = currentTime.toString() + " seconds.";
 
                     // ratio.innerHTML = (ratioValue*100).toFixed(1);
 
@@ -250,6 +250,7 @@
 
     }, false);
 </script>
+{{HTML::linkAction('GameController@play', 'Play Again')}}
 {{HTML::linkAction('GameController@result', 'Result')}}
 </body>
 </html>
