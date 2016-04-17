@@ -11,12 +11,10 @@
 |
 */
 
-//Route::get('/', function()
-//{
-//	return View::make('game/game');
-//});
-
-
+Route::get('/', function()
+{
+    return View::make('game/game');
+});
 
 Route::resource('game', 'GameController');
 Route::get('play', 'GameController@play');

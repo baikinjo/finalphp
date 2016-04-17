@@ -32,7 +32,7 @@
     </tr>
     <tr>
         <th>
-            <canvas id="myCanvas" width="600" height="300"></canvas>
+            <canvas id="myCanvas" width="600" height="350"></canvas>
         </th>
     </tr>
     </tbody>
@@ -60,14 +60,16 @@
     var imageOpenDoor = new Image();
     var imageCloseDoor = new Image();
     var imageCheck = new Image();
-    var imageGoat = new Image();
-    var imageCar = new Image();
+    var imageWrong = new Image();
+    var imagePoo = new Image();
+    var imageTreasure = new Image();
 
     imageOpenDoor.src = 'img/open_door.png'
     imageCloseDoor.src ='img/closed_door.png'
     imageCheck.src = 'img/check.png'
-    imageGoat.src = 'img/goat.png'
-    imageCar.src = 'img/car.png'
+    imagePoo.src = 'img/poo.png'
+    imageTreasure.src = 'img/treasure.png'
+    imageWrong.src = 'img/x.png'
 
 
     var carDoor = Math.floor(Math.random() * 3);
@@ -119,9 +121,9 @@
                 if (i != carDoor) {goatDoors.push(i)};
             }
             context.clearRect(0,0,canvas.width,canvas.height)
-            context.drawImage(imageCar, carDoor*200+50,200,120, 80);
+            context.drawImage(imageTreasure, carDoor*200+50,200,120, 80);
             goatDoors.forEach(function(d){
-                context.drawImage(imageGoat, d*200 + 75,180,101, 100);
+                context.drawImage(imagePoo, d*200 + 75,180,101, 100);
             });
             context.drawImage(imageCloseDoor, 0,0,200, 350);
             context.drawImage(imageCloseDoor, 200,0,200, 350);
@@ -143,9 +145,9 @@
                 }
                 doors[openDoor] = true;
                 context.clearRect(0,0,canvas.width,canvas.height);
-                context.drawImage(imageCar, carDoor*200+50,200,120, 80);
+                context.drawImage(imageTreasure, carDoor*200+50,200,120, 80);
                 goatDoors.forEach(function(d){
-                    context.drawImage(imageGoat, d*200 + 75,180,101, 100);
+                    context.drawImage(imagePoo, d*200 + 75,180,101, 100);
                 });
                 i = -1;
                 while(++i < 3){
@@ -154,6 +156,7 @@
                     }
                     else{
                         context.drawImage(imageOpenDoor, i*200-2,0,212, 370);
+
                     }
                 }
                 context.drawImage(imageCheck, check*200+50,50,50,50);
@@ -171,9 +174,9 @@
                     }
                     doors[open] = true;
                     context.clearRect(0,0,canvas.width,canvas.height)
-                    context.drawImage(imageCar, carDoor*200+50,200,120, 80);
+                    context.drawImage(imageTreasure, carDoor*200+50,200,120, 80);
                     goatDoors.forEach(function(d){
-                        context.drawImage(imageGoat, d*200 + 75,180,101, 100);
+                        context.drawImage(imagePoo, d*200 + 75,180,101, 100);
                     });
                     i = -1;
                     while(++i < 3){
@@ -192,6 +195,7 @@
                         turn = -1;
                         checkTime = 1;
                         currentTime = counter;
+                        context.drawImage(imageCheck, open*200+50,50,50,50);
                     }
                     else {
                         ++numLoss;
@@ -199,6 +203,7 @@
                         turn = -10;
                         checkTime = 1;
                         currentTime = counter;
+                        context.drawImage(imageWrong, open*200+50,50,50,50);
                     }
                     win.innerHTML = numWin;
                     scoring.innerHTML = score;

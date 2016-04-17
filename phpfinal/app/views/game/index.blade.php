@@ -1,5 +1,5 @@
 
-@extends('layouts.basic')
+    @extends('layouts.basic')
 @section('maincontent')
     <h1>Welcome</h1>
 
