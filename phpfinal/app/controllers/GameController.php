@@ -1,12 +1,13 @@
 <?php
 
 class GameController extends \BaseController {
+	
+	protected $gamer;
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	public function __construct(Game $gamer){
+		$this->game = $gamer;
+	}
+	
 	public function index()
 	{
 		return View::make('game.index');
@@ -20,7 +21,7 @@ class GameController extends \BaseController {
 	
 	public function result()
 	{
-		return View::make('game.result');
+		return View::make('game.result', ['games'=>$this->game->all()]);
 	}
 
 	/**
@@ -41,7 +42,17 @@ class GameController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+
+		$this->game->fill($input);
+
+		$this->game->username = Input::get('username');
+		$this->game->score = Session::get('score');
+		$this->game->streak = Session::get('streak');
+		$this->game->save();
+
+
+		return View::make('game.result', ['games'=>$this->game->all()]);
 	}
 
 

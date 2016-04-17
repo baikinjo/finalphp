@@ -16,6 +16,7 @@ class CreateGamesTable extends Migration
 		{
 			$table->increments('gameID');
 			$table->timestamps();
+			$table->string('username');
 			$table->integer('streak')->default(0)->unsigned();
 			$table->integer('score')->default(0)->unsigned();
 		});
